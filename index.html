@@ -28,12 +28,38 @@
         </div>
         <div class="center">
             <div class="centertext">Let's do this!</div>
-            <form action="results.html" method="GET">
-                <label for="name">Name</label>
-            </form>
+            <fieldset class="forms">
+                <form action="results.html" method="GET">
+                    <label for="firstname">FIRST NAME</label>
+                    <input type="text" name="firstName" id="firstname">
+                </form>
+                <form action="results.html" method="GET">
+                    <label for="lastname">LAST NAME</label>
+                    <input type="text" name="lastName" id="lastname">
+                </form>
+                <form action="results.html" method="GET">
+                    <label for="validEmail">EMAIL</label>
+                    <input type="email" name="validEmail" id="validEmail" >
+                </form>
+                <form action="results.html" method="GET">
+                    <label for="telephone">PHONE NUMBER</label>
+                    <input type="tel" name="telephone" id="number">
+                </form>
+                <form action="results.html" method="GET">
+                    <label for="password">PASSWORD</label>
+                    <input type="password" name="password" id="password" class="password" required>
+                    <div id="pswd" style="font-size: .65rem; color: red; margin-top:2px">* Passwords do not match</div>
+                </form>
+                <form action="results.html" method="GET">
+                    <label for="confirmPassword">CONFIRM PASSWORD</label>
+                    <input type="password" name="confirmPassword" id="confirmPassword" class="password" required>
+                </form>
+            </fieldset>
         </div>
         <div>
-            <button>Create Account</button>
+            <form action="results.html" method="GET">
+                <input type="submit" value="Create Account" class="btn"></input>
+            </form>
             <div>
                 <div class="text3">
                     Already have an account? 
@@ -45,6 +71,37 @@
     </div>
 </body>
 <footer>
-    <script src="script.js"></script>
+    <script>
+        let pass1 = document.getElementById('password');
+        let pass2 = document.getElementById('confirmPassword');
+        
+        
+        let pass1Listener = pass1.addEventListener('input', () => passwordCheck());
+        let pass2Listener = pass2.addEventListener('input', () => passwordCheck());
+
+
+        const things = document.querySelectorAll('.password');
+
+        function passwordCheck() {
+            if (pass1.value == pass2.value && pass1.value != '') {
+                document.getElementById('pswd').style.visibility = 'hidden';
+                
+                for (const thing of things) {
+                    thing.classList.add('valid');
+                    thing.classList.remove('invalid');
+                }
+            }
+            
+            else {
+                document.getElementById('pswd').style.visibility = 'visible';
+                
+                for (const thing of things) {
+                    thing.classList.add('invalid');
+                    thing.classList.remove('valid');
+                }
+            }
+        }
+
+    </script>
 </footer>
 </html>
