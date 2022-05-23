@@ -59,6 +59,12 @@ body {
         margin-bottom: .5rem;
     }
 
+    .credit {
+        color: white;
+        font-weight: lighter;
+        text-decoration: underline;
+    }
+
 
 .right {
     display: flex;
